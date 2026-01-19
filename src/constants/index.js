@@ -39,6 +39,8 @@ export const LIMITED_POOL_RULES = {
   // 赠送机制
   giftInterval: 240,                  // 每240抽赠送限定信物
   freeTenPullInterval: 30,            // 每30抽赠送不计入保底的十连
+  freeTenPullMaximum: 1,              // 赠送十连最多1次
+
   freeTenPullCountsTowardPity: false, // 赠送十连不计入保底
 
   // 情报书（仅获得1次）

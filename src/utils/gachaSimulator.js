@@ -310,7 +310,7 @@ export class GachaSimulator {
       };
     }
 
-    const freeTenPullCount = Math.floor(totalPulls / this.rules.freeTenPullInterval);
+    const freeTenPullCount = Math.min(Math.floor(totalPulls / this.rules.freeTenPullInterval), this.rules.freeTenPullMaximum);
     const isNewGift = freeTenPullCount > this.state.freeTenPullsReceived;
 
     return {

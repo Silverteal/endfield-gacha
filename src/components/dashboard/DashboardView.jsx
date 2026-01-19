@@ -318,19 +318,19 @@ const DashboardView = ({
           <div>
             <div className="flex justify-between text-xs mb-1">
               <span className="font-bold text-slate-600 dark:text-zinc-400 flex items-center">
-                赠送十连 (每30抽)
-                {Math.floor(stats.total / 30) > 0 && (
-                  <span className="ml-2 flex items-center gap-1 text-blue-600 font-bold bg-blue-50 dark:bg-blue-900/30 px-1.5 rounded text-[10px] border border-blue-100 dark:border-blue-800">
-                    已获 x {Math.floor(stats.total / 30)}
+                赠送十连（30抽）
+                {stats.total >= 30 && (
+                  <span className="ml-2 flex items-center gap-1 text-green-600 font-bold bg-green-50 dark:bg-green-900/30 px-1.5 rounded text-[10px] border border-green-100 dark:border-green-800">
+                    已获得
                   </span>
                 )}
               </span>
-              <span className="text-slate-400 dark:text-zinc-500">{stats.total % 30} / 30</span>
+              <span className="text-slate-400 dark:text-zinc-500">{Math.min(stats.total, 30)} / 30</span>
             </div>
             <div className="h-2 w-full bg-slate-100 rounded-sm overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-blue-300 to-blue-500 transition-all duration-500"
-                style={{ width: `${((stats.total % 30) / 30) * 100}%` }}
+                className={`h-full transition-all duration-500 ${stats.total >= 30 ? 'bg-green-500' : 'bg-gradient-to-r from-cyan-300 to-cyan-500'}`}
+                style={{ width: `${stats.total >= 30 ? 100 : Math.min((stats.total / 30) * 100, 100)}%` }}
               ></div>
             </div>
             <div className="text-[10px] text-slate-400 dark:text-zinc-500 mt-1">
